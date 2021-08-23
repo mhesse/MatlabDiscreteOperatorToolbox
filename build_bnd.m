@@ -1,4 +1,4 @@
-function [B,N,fn] = build_bnd(Param,Grid,I)
+function [B,N,fn] = build_bnd(BC,Grid,I) % repo
 % author: Marc Hesse
 % date: 06/09/2015
 % Description:
@@ -14,13 +14,13 @@ function [B,N,fn] = build_bnd(Param,Grid,I)
 % we simply eliminate the rows.
 %
 % Input:
-% Param = structure containing all information about the physical problem
+% BC = structure containing all information about the physical problem
 %         in particular this function needs the fields
-%         Param.dof_dir = Nc by 1 column vector containing 
+%         BC.dof_dir = Nc by 1 column vector containing 
 %                         the dof's of the Dirichlet boundary.
-%         Param.dof_neu = N by 1 column vector containing 
+%         BC.dof_neu = N by 1 column vector containing 
 %                         the dof's of the Neumann boundary.
-%         Param.qb      = column vector of prescribed fluxes on Neuman bnd.
+%         BC.qb      = column vector of prescribed fluxes on Neuman bnd.
 % Grid = structure containing all pertinent information about the grid.
 % I = identity matrix in the full space
 %
@@ -33,41 +33,44 @@ function [B,N,fn] = build_bnd(Param,Grid,I)
 % >> Grid.xmin = 0; Grid.xmax = 1; Grid.Nx = 10;
 % >> Grid = build_grid(Grid);
 % >> [D,G,I]=build_ops(Grid);
-% >> Param.dof_dir   = Grid.dof_xmin;    % identify cells on Dirichlet bnd
-% >> Param.dof_f_dir = Grid.dof_f_xmin;  % identify faces on Dirichlet bnd
-% >> Param.dof_neu   = Grid.dof_xmax;    % identify cells on Neumann bnd
-% >> Param.dof_f_neu = Grid.dof_f_xmax;  % identify cells on Neumann bnd
-% >> Param.qb = 1;                   % set bnd flux
-% >> [B,N,fn] = build_bnd(Param,Grid,I);
+% >> BC.dof_dir   = Grid.dof_xmin;    % identify cells on Dirichlet bnd
+% >> BC.dof_f_dir = Grid.dof_f_xmin;  % identify faces on Dirichlet bnd
+% >> BC.dof_neu   = Grid.dof_xmax;    % identify cells on Neumann bnd
+% >> BC.dof_f_neu = Grid.dof_f_xmax;  % identify cells on Neumann bnd
+% >> BC.qb = 1;                   % set bnd flux
+% >> [B,N,fn] = build_bnd(BC,Grid,I);
+
+%% Add dof_f_dir in case it is not specified
+if ~isfield(BC,'dof_f_dir'); BC.dof_f_dir = []; end % Only needed for gradient flows
 
 %% If Neumann condtions are not set explicitly, make them natural
-if ~isfield(Param,'dof_neu');   Param.dof_neu   = []; end
-if ~isfield(Param,'dof_f_neu'); Param.dof_f_neu = []; end
-if ~isfield(Param,'qb');        Param.qb        = []; end
+if ~isfield(BC,'dof_neu');   BC.dof_neu   = []; end
+if ~isfield(BC,'dof_f_neu'); BC.dof_f_neu = []; end
+if ~isfield(BC,'qb');        BC.qb        = []; end
 
 %% Check input format
-if isrow(Param.dof_dir)   && length(Param.dof_dir)>1;   error('Param.dof_dir is not a column vector'); end
-if isrow(Param.dof_neu)   && length(Param.dof_neu)>1;   error('Param.dof_neu is not a column vector'); end
-if isrow(Param.dof_f_dir) && length(Param.dof_f_dir)>1; error('Param.dof_f_dir is a not column vector'); end
-if isrow(Param.dof_f_neu) && length(Param.dof_f_neu)>1; error('Param.dof_f_neu is a not column vector'); end
-if isfield(Param,'qb') && isrow(Param.qb) && length(Param.qb)>1;        error('Param.qb is not a column vector'); end
+if isrow(BC.dof_dir)   && length(BC.dof_dir)>1;   error('BC.dof_dir is not a column vector'); end
+if isrow(BC.dof_neu)   && length(BC.dof_neu)>1;   error('BC.dof_neu is not a column vector'); end
+if isrow(BC.dof_f_dir) && length(BC.dof_f_dir)>1; error('BC.dof_f_dir is a not column vector'); end
+if isrow(BC.dof_f_neu) && length(BC.dof_f_neu)>1; error('BC.dof_f_neu is a not column vector'); end
+if isfield(BC,'qb') && isrow(BC.qb) && length(BC.qb)>1;        error('BC.qb is not a column vector'); end
 
 %% Check if sufficient BC's are specified
-if length(Param.dof_dir) ~= length(Param.g);  error('Insufficient number of constraints specified.'); end
-if length(Param.dof_neu) ~= length(Param.qb); error('Insufficient number of boundary fluxes specified.'); end
+% if length(BC.dof_dir) ~= length(BC.g);  error('Insufficient number of constraints specified.'); end
+% if length(BC.dof_neu) ~= length(BC.qb); error('Insufficient number of boundary fluxes specified.'); end
 
 %% Other checks to implement
 % doubling up on constraints
 % cell # == face #
 
 %% Dirichlet boundary conditions
-B = I(Param.dof_dir,:);
-N = I; N(:,Param.dof_dir) = [];
+B = I(BC.dof_dir,:);
+N = I; N(:,BC.dof_dir) = [];
 
 %% Neumann boundary conditions
-if isempty(Param.dof_neu)
+if isempty(BC.dof_neu)
     fn = spalloc(Grid.N,1,0);                     % allocate sparse zero vector
 else
-    fn = spalloc(Grid.N,1,length(Param.dof_neu)); % allocate sparse vector
-    fn(Param.dof_neu) = Param.qb.*Grid.A(Param.dof_f_neu)./Grid.V(Param.dof_neu);
+    fn = spalloc(Grid.N,1,length(BC.dof_neu)); % allocate sparse vector
+    fn(BC.dof_neu) = BC.qb.*Grid.A(BC.dof_f_neu)./Grid.V(BC.dof_neu);
 end
