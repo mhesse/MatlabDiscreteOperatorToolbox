@@ -156,6 +156,15 @@ switch Grid.geom
         Grid.V = Aseg*Grid.dz; % volume of the cells
     case 'spherical_shell_theta_phi'
         fprintf('spherical_shell_theta_phi:\nNeed to complete volume and area elements\n')
+        if ~isfield(Grid,'R_shell')
+            fprintf('Grid.R_shell not initialized. Radius of spherical shell initialized to unity.\n ')
+            Grid.R_shell = 1;  
+        end
+        Acap = 2*pi*Grid.R_shell^2*(1-cos(Grid.xf)); % areas of the sph. caps corresponding to the cell faces
+        Aseg = diff(Acap); % areas of the sph. segments of the cells
+        Aseg_sec = Aseg/Grid.Ny;
+        A = repmat(Aseg_sec',Grid.Ny,1);
+        Grid.A = A(:);
     otherwise
         error('Unknown grid geometry.')
 end
