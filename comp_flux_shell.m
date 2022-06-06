@@ -1,4 +1,4 @@
-function [q] = comp_flux_shell(G,Kd,u,Grid) % MDOT repo
+function [q] = comp_flux_shell(G,Kd,u,Grid) % MDOT repo 
 % author: Marc Hesse
 % date: Mar 30, 2022
 % Description: Computes the flux of a potential field on a spherical shell.
@@ -39,3 +39,4 @@ q_pole = q_max_pole*cos(dir_max-Grid.yc);
 q(Grid.dof_f_xmin) = q_pole;
 
 %% Flux at North pole is not computed - because we don't need it for Mars
+% add later
