@@ -66,12 +66,14 @@ end
 Grid.Nfy = Grid.Nx*(Grid.Ny+1);
 if Grid.Ny == 1
     Grid.Nf = Grid.Nfx;
+    Grid.Nfy = 0;
 elseif Grid.Nx == 1
     Grid.Nf = Grid.Nfy;
 else
     Grid.Nf = Grid.Nfx + Grid.Nfy;
 end
 
+Grid.Nfz = [];
 
 % x, y, z coords of the 12 corners of the domain
 Grid.xdom = [Grid.xmin Grid.xmin Grid.xmin Grid.xmin Grid.xmax Grid.xmax Grid.xmax Grid.xmin Grid.xmin Grid.xmin Grid.xmax Grid.xmin; ...
@@ -109,14 +111,15 @@ Grid.dof_f_xmax = [Grid.Nfx-Grid.Ny+1:Grid.Nfx]';
 Grid.dof_f_ymin = Grid.Nfx+[1:Grid.Ny+1:Grid.Nfy-Grid.Ny]';
 Grid.dof_f_ymax = Grid.Nfx+[Grid.Ny+1:Grid.Ny+1:Grid.Nfy]';
 
+Grid.Nc = (Grid.Nx+1)*(Grid.Ny+1);
+
 % In preparation for irregular grid, store all cell volumes and face areas
 % Volumes are stored and indexed like unknowns. Areas are stored and indexed like fluxes
 
 switch Grid.geom
     case 'cartesian' % 1D and 2D
         Grid.A = [ones(Grid.Nfx,1)*Grid.dy*Grid.dz;...
-                  ones(Grid.Nfy,1)*Grid.dx*Grid.dz;
-                  Grid.dx*Grid.dy];
+                  ones(Grid.Nfy,1)*Grid.dx*Grid.dz];
         Grid.V  = ones(Grid.N,1)*Grid.dx*Grid.dy*Grid.dz;
     case 'cylindrical_r'
         Grid.A = 2*pi*Grid.xf*Grid.dz;
@@ -155,7 +158,7 @@ switch Grid.geom
         Grid.A = Circ*Grid.dz; % cross-sectional area of the cell faces
         Grid.V = Aseg*Grid.dz; % volume of the cells
     case 'spherical_shell_theta_phi'
-        fprintf('spherical_shell_theta_phi:\nNeed to complete volume and area elements\n')
+%         fprintf('spherical_shell_theta_phi:\nNeed to complete volume and area elements\n')
         if ~isfield(Grid,'R_shell')
             fprintf('Grid.R_shell not initialized. Radius of spherical shell initialized to unity.\n ')
             Grid.R_shell = 1;  
@@ -165,6 +168,7 @@ switch Grid.geom
         Aseg_sec = Aseg/Grid.Ny;
         A = repmat(Aseg_sec',Grid.Ny,1);
         Grid.A = A(:);
+        Grid.V = Grid.A*Grid.dz;
     otherwise
         error('Unknown grid geometry.')
 end
