@@ -1,4 +1,4 @@
-function [A] = flux_LaxWend(q,Grid,G,dt,Param)
+function [A] = flux_LaxWend(q,Grid,G,dt,Param) % MDOT repo
 % author: Marc Hesse, Jake Jordan
 % date: 26 Jul 2016, 5 Aug 2016
 % Description: Operator implementation of the 2nd-order Lax-Wendroff flux

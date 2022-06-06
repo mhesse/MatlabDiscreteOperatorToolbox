@@ -1,4 +1,4 @@
-function [] = plot_flownet(Nh,Ns,h,PSI,head,stream,Grid)
+function [] = plot_flownet(Nh,Ns,h,PSI,head,stream,Grid) % MDOT repo
 % author: Marc Hesse
 % date: 24 Oct 2015
 % Description: Plots a flownet with an equal number of equally spaced head 

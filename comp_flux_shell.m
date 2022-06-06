@@ -1,4 +1,4 @@
-function [q] = comp_flux_shell(G,Kd,u,Grid)
+function [q] = comp_flux_shell(G,Kd,u,Grid) % MDOT repo
 % author: Marc Hesse
 % date: Mar 30, 2022
 % Description: Computes the flux of a potential field on a spherical shell.

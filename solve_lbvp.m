@@ -1,4 +1,4 @@
-function [u] = solve_lbvp(L,f,B,g,N) % repo
+function [u] = solve_lbvp(L,f,B,g,N) % MDOT repo
 % author: Marc Hesse
 % date: 26 Sept 2014
 % Description

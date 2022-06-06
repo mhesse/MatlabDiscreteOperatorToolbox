@@ -1,4 +1,4 @@
-function [phi_lim] = comp_limiter(theta,limiter)
+function [phi_lim] = comp_limiter(theta,limiter) % MDOT repo
 % author: Marc Hesse
 % date: 29 Jul 2016
 % Description: Computes the slope limiter for 2nd-order TVD scheme.  

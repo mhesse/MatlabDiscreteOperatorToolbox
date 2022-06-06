@@ -1,4 +1,4 @@
-function [m,gamma,delta] = comp_matern(sigma,rho,Grid,D,G,I,seed)
+function [m,gamma,delta] = comp_matern(sigma,rho,Grid,D,G,I,seed) % MDOT repo
 
 coeff = 3.6e-07; % handcrafted, locally sourced
 % 6.3441e-06 - 1 by 1 domain

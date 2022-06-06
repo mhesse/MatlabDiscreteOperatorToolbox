@@ -1,4 +1,4 @@
-function [col] = marc_colors()
+function [col] = marc_colors() % MDOT repo
 % Colors Marc likes - or at least used to like
 col.red    = [190  30  45]/255; 
 col.blue   = [ 39 170 225]/255; 

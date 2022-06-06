@@ -1,4 +1,4 @@
-function [Kd] = comp_mean(K,p,kvkh,Grid) % repo
+function [Kd] = comp_mean(K,p,kvkh,Grid) % MDOT repo
 % author: Marc Hesse
 % date: 2 Oct 2014
 % Description:

@@ -1,4 +1,4 @@
-function [fig1] = plot_staggered_grid(Grid)
+function [fig1] = plot_staggered_grid(Grid) % MDOT repo
 % author: Marc Hesse
 % date: 15 Apr 2020
 % Description: Plots staggered grid with unknowns

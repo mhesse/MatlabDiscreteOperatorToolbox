@@ -1,4 +1,4 @@
-function [theta] = smoothness(df,q,Grid)
+function [theta] = smoothness(df,q,Grid) % MDOT repo
 % author: Marc Hesse
 % date: 29 Jul 2016
 % Description: Computes an indicator of the smoothness of the solution at

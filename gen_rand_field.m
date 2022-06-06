@@ -1,4 +1,4 @@
-function [K,X,Y] = gen_rand_field(Grid,X,Y,corr_length,amp,Kmean,type,rng_state) % repo
+function [K,X,Y] = gen_rand_field(Grid,X,Y,corr_length,amp,Kmean,type,rng_state) % MDOT repo
 % [X,Y] = meshgrid(Grid.xc,Grid.yc);
 x = X(:); y = Y(:);
 if strcmp(type,'exp')

@@ -1,4 +1,4 @@
-function [Kd] = comp_mean_matrix(K,p,Grid) % repo MDOT 
+function [Kd] = comp_mean_matrix(K,p,Grid) % MDOT repo
 % author: Marc Hesse
 % date: 2 Mar 2021, 25 Apr 2021
 % Description:

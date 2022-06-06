@@ -1,4 +1,4 @@
-function [Qxc,Qyc] = interp_f2c(q,Grid,Xc,Yc)
+function [Qxc,Qyc] = interp_f2c(q,Grid,Xc,Yc) % MDOT repo
 % author: Marc Hesse
 % date: 4 Mar 2020
 % Description: Interpolate quantities from the faces to the cell centers

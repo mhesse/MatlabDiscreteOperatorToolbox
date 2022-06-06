@@ -1,4 +1,4 @@
-function [u] = solve_lbvp_factored(Lred_L,Lred_U,L,f,B,g,N)
+function [u] = solve_lbvp_factored(Lred_L,Lred_U,L,f,B,g,N) % MDOT repo
 % author: Marc Hesse
 % date: 26 Sept 2014, 27 Apr 2016
 % Description

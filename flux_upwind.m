@@ -1,4 +1,4 @@
-function [A] = flux_upwind(q,Grid) % repo (MDOT)
+function [A] = flux_upwind(q,Grid) % MDOT repo
 % author: Marc Hesse
 % date: 15 April 2015, 8 Nov 2017, 9 Feb 2020
 % Description:

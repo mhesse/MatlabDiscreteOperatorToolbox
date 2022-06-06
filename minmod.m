@@ -1,4 +1,4 @@
-function [mm] = minmod(a,b)
+function [mm] = minmod(a,b) % MDOT repo
 % name: minmod.m
 % author: Marc Hesse - actually got it from web 
 %         https://github.com/wme7/aero-matlab/blob/master/CFD/minmod.m

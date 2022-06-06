@@ -1,4 +1,4 @@
-function [dof_bnd_in,dof_bnd_out] = find_bnd_cells(dof_in,dof_out,dof_f_bnd,D,Grid)
+function [dof_bnd_in,dof_bnd_out] = find_bnd_cells(dof_in,dof_out,dof_f_bnd,D,Grid) % MDOT repo
 % author: Marc Hesse
 % date: 22 Sep 2016
 % Description:

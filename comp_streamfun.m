@@ -1,4 +1,4 @@
-function [PSI,psi_min,psi_max] = comp_streamfun(q,Grid)
+function [PSI,psi_min,psi_max] = comp_streamfun(q,Grid) % MDOT repo
 % author: Marc Hesse
 % date: 30 Oct 2014, 12 June 2015, 9 July 2015
 % Description: The streamfunction of a numerical solution is computed at 

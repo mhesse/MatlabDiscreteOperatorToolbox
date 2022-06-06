@@ -1,4 +1,4 @@
-function [J] = comp_jacobian(r,u,eps)
+function [J] = comp_jacobian(r,u,eps) % MDOT repo
 % This code was taken from the following lecture notes
 % http://www.maths.lth.se/na/courses/FMN081/FMN081-06/lecture7.pdf
 % by Claus Fuehrer at the University of Lund - thanks.
