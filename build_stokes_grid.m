@@ -1,4 +1,4 @@
-function [Grid] = build_stokes_grid(Gridp) % repo
+function [Grid] = build_stokes_grid(Gridp) % MDOT repo
 % authors: Marc Hesse, Evan Carnahan
 % date: 27 Sept 2019
 % Description: This function builds the three stagged grids used for the

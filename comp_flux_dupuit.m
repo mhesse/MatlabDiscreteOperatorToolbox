@@ -1,4 +1,4 @@
-function [Q,q] = comp_flux_dupuit(D,Kd,G,h,fs,Grid,BC) % repo MDOT
+function [Q,q] = comp_flux_dupuit(D,Kd,G,h,fs,Grid,BC) % MDOT repo
 % author: Marc Hesse
 % date: 25 Nov 2014, 10 Jul 2015, 23 Mar 2021
 % Description:

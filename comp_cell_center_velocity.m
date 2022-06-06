@@ -1,5 +1,5 @@
-function [Vx_c,Vy_c] = comp_cell_center_velocity(v,Xc,Yc,Grid)
-% author: Marc Hesse
+function [Vx_c,Vy_c] = comp_cell_center_velocity(v,Xc,Yc,Grid) % MDOT repo
+% author: Marc Hesse 
 % date: 29 May 2020
 % Description:
 % This functions averages the face velocities to the cell centers for a

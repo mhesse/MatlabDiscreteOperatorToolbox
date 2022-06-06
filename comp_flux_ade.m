@@ -1,4 +1,4 @@
-function [q] = comp_flux_ade(flux,res,u,uold,v,theta,dt,Grid,BC)
+function [q] = comp_flux_ade(flux,res,u,uold,v,theta,dt,Grid,BC) % MDOT repo
 % author: Marc Hesse
 % date: 29 Apr 2020
 % Description:

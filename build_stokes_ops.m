@@ -1,4 +1,4 @@
-function [D,Edot,Dp,Gp,Z,I]=build_stokes_ops(Grid) % repo
+function [D,Edot,Dp,Gp,Z,I]=build_stokes_ops(Grid) % MDOT repo
 % authors: Marc Hesse, Evan Carnahan
 % date: 4 Oct. 2019
 

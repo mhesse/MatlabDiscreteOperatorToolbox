@@ -1,4 +1,4 @@
-function [q] = comp_flux_gen(flux,res,u,Grid,Param)
+function [q] = comp_flux_gen(flux,res,u,Grid,Param) % MDOT repo
 % author: Marc Hesse
 % date: 22 Feb 2019
 % Description:

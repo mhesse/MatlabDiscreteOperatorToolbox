@@ -1,4 +1,4 @@
-function [B,N,fn] = build_bnd(BC,Grid,I) % repo
+function [B,N,fn] = build_bnd(BC,Grid,I) % MDOT repo
 % author: Marc Hesse
 % date: 06/09/2015
 % Description:

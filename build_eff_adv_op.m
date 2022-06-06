@@ -1,4 +1,4 @@
-function [A] = build_eff_adv_op(A,ve,c,dt,G,Grid,Param,method)
+function [A] = build_eff_adv_op(A,ve,c,dt,G,Grid,Param,method) % MDOT repo
 % author: Marc Hesse
 % date: 12 Aug 2016, 
 % Description: Builds the advection matrix containing the upwinded and 

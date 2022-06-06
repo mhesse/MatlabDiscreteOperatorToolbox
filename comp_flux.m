@@ -1,4 +1,4 @@
-function [q] = comp_flux(D,Kd,G,h,fs,Grid,BC) % repo - MDOT
+function [q] = comp_flux(D,Kd,G,h,fs,Grid,BC) % MDOT repo
 % author: Marc Hesse
 % date: 25 Nov 2014, 10 Jul 2015
 % Description:
