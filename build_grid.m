@@ -54,7 +54,8 @@ Grid.Lz = Grid.zmax-Grid.zmin;    % domain length in z
 Grid.dz = Grid.Lz/Grid.Nz;        % dz of the gridblocks
 
 %% Check input paramters
-if Grid.xmin > Grid.xmax; error('xmin > xmax.'); end
+if Grid.xmin >= Grid.xmax; error('xmin >= xmax.'); end
+if Grid.ymin >= Grid.ymax; error('ymin >= ymax.'); end
 
 %% Number for fluxes
 if Grid.Nx > 1
