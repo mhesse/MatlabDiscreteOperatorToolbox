@@ -140,7 +140,7 @@ elseif (Nx==1) && (Ny>1) % 1D y-direction
 end
 
 % for spherical shell coordinates we need periodicity in the y-direction
-if strcmp(Grid.geom,'spherical_shell_theta_phi')
+if strcmp(Grid.geom,'spherical_shell_theta_phi') & (Nx>1) && (Ny>1)
     Mx = spdiags([ones(Nx,1) ones(Nx,1)]/2,[-1 0],Nx+1,Nx); % 1D mean-matrix in x-dir
     My = spdiags([ones(Ny,1) ones(Ny,1)]/2,[-1 0],Ny+1,Ny); % 1D mean-matrix in y-dir
     My(1,Ny) = 1/2; My(Ny+1,1) = 1/2;                       % periodicity in y-dir
