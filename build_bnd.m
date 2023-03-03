@@ -1,4 +1,4 @@
-function [B,N,fn] = build_bnd(BC,Grid,I) % MDOT repo
+function [B,N,fn,BC] = build_bnd(BC,Grid,I) % MDOT repo
 % author: Marc Hesse
 % date: 06/09/2015
 % Description:
@@ -18,15 +18,15 @@ function [B,N,fn] = build_bnd(BC,Grid,I) % MDOT repo
 %         in particular this function needs the fields
 %         BC.dof_dir = Nc by 1 column vector containing 
 %                         the dof's of the Dirichlet boundary.
-%         BC.dof_neu = N by 1 column vector containing 
+%         BC.dof_neu = Nn by 1 column vector containing 
 %                         the dof's of the Neumann boundary.
-%         BC.qb      = column vector of prescribed fluxes on Neuman bnd.
+%         BC.qb      = Nn by 1 column vector of prescribed fluxes on Neuman bnd.
 % Grid = structure containing all pertinent information about the grid.
 % I = identity matrix in the full space
 %
 % Output:
 % B = Nc by N matrix of the Dirichlet constraints
-% N = (N-Nc) by N matrix of the nullspace of B
+% N = N by (N-Nc) matrix of the nullspace of B
 % fn = N by 1 r.h.s. vector of Neuman contributions
 %
 % Example call:
