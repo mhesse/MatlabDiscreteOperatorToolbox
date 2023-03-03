@@ -128,7 +128,7 @@ switch Grid.geom
     case 'spherical_r'
         Grid.A = 4*pi*Grid.xf.^2;
         Grid.V  = 4/3*pi*(Grid.xf(2:Grid.Nx+1).^3-Grid.xf(1:Grid.Nx).^3);
-    case 'spherical1D'
+    case 'spherical1D' % this is the approximation for a thin shell!
         Grid.A = 4*pi*Grid.xf.^2;
         Grid.V  = 4*pi*Grid.xc.^2*Grid.dx;%4/3*pi*(Grid.xf(2:Grid.Nx+1).^3-Grid.xf(1:Grid.Nx).^3);
     case 'cylindrical_rz'
