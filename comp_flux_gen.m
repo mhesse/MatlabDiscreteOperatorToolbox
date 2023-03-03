@@ -1,4 +1,4 @@
-function [q] = comp_flux_gen(flux,res,u,Grid,Param) % MDOT repo
+function [q] = comp_flux_gen(flux,res,u,Grid,BC) % MDOT repo
 % author: Marc Hesse
 % date: 22 Feb 2019
 % Description:
@@ -15,7 +15,7 @@ function [q] = comp_flux_gen(flux,res,u,Grid,Param) % MDOT repo
 % res = anonymous function computing the residual 
 % u = vector of 'flux potential' (head, temperature,electric field,...)
 % Grid = structure containing pertinent information about the grid
-% Param = structure containing pertinent information about BC's
+% BC = structure containing pertinent information about BC's
 % 
 % Output:
 % q = correct flux everywhere
@@ -26,11 +26,10 @@ function [q] = comp_flux_gen(flux,res,u,Grid,Param) % MDOT repo
 %% Compute interior fluxes
 q = flux(u);
 
-
 %% Compute boundary fluxes
 % 1) Identify the faces and cells on the boundary
-dof_cell = [Param.dof_dir;Param.dof_neu];
-dof_face = [Param.dof_f_dir;Param.dof_f_neu];
+dof_cell = [BC.dof_dir;BC.dof_neu];
+dof_face = [BC.dof_f_dir;BC.dof_f_neu];
 % 2) Determine sign of flux: Convention is that flux is positive in
 %    coordinate direction. So the boundary flux, qb is not equal to q*n,
 %    were n is the outward normal! 
