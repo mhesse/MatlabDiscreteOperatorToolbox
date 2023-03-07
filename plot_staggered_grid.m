@@ -8,8 +8,8 @@ x = Grid.xf; y = Grid.yf; Nx = Grid.Nx+1; Ny = Grid.Ny+1;
 [Xy,Yy] = meshgrid(Grid.xc,Grid.yf);
 
 fig1 = figure;
-plot([x';x'],[zeros(1,Nx);ones(1,Nx)],'k-'), hold on
-plot([zeros(1,Ny);ones(1,Ny)],[y';y'],'k-')
+plot([x';x'],[Grid.xmin*ones(1,Nx);Grid.xmax*ones(1,Nx)],'k-'), hold on
+plot([Grid.ymin*ones(1,Ny);Grid.ymax*ones(1,Ny)],[y';y'],'k-')
 plot(Xc,Yc,'ko')
 plot(Xx,Yx,'ro','markerfacecolor','w')
 plot(Xy,Yy,'bo','markerfacecolor','w')
