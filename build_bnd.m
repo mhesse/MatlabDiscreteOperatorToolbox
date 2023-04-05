@@ -32,7 +32,7 @@ function [B,N,fn,BC] = build_bnd(BC,Grid,I) % MDOT repo
 % Example call:
 % >> Grid.xmin = 0; Grid.xmax = 1; Grid.Nx = 10;
 % >> Grid = build_grid(Grid);
-% >> [D,G,I]=build_ops(Grid);
+% >> [D,G,~,I,M]=build_ops(Grid);
 % >> BC.dof_dir   = Grid.dof_xmin;    % identify cells on Dirichlet bnd
 % >> BC.dof_f_dir = Grid.dof_f_xmin;  % identify faces on Dirichlet bnd
 % >> BC.dof_neu   = Grid.dof_xmax;    % identify cells on Neumann bnd
